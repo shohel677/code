@@ -1,0 +1,18 @@
+//custom filter register in function.php
+function _codetheme_no_post($text){
+	return esc_html__('Sorry, No Post found', '_codetheme');
+	
+}
+add_filter('_codetheme_no_post_text', '_codetheme_no_post');
+//then call in theme like index.php
+<?php echo apply_filters('_codetheme_no_post_text','_codetheme'); ?>
+
+
+
+
+//core filter
+function _codetheme_add_title ($title){
+	return esc_html__('Filter  '. $title, '_codetheme');
+	
+}
+add_filter('the_title', '_codetheme_add_title')

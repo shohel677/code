@@ -1,0 +1,2 @@
+code in footer.php or info.php
+code in customizer.php

@@ -1,0 +1,3 @@
+Code in sidebars.php
+code in footer.php or widgets.php
+code customizer.php

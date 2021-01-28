@@ -1,0 +1,3 @@
+Code in author.php
+Code in single.php
+code in customizer.php

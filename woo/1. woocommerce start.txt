@@ -1,0 +1,3 @@
+Keep woocommerce in plugin
+add theme support in functions.php
+Duplicate page.php

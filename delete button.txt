@@ -1,0 +1,4 @@
+code in delete_post.php
+include delete_post.php in functions.php
+code in helpers.php
+call is loop.php

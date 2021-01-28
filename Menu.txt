@@ -1,0 +1,217 @@
+//Register menu in navigation.php
+<?php
+
+function _themename_register_menus() {
+    register_nav_menus( array(
+        'main-menu' => esc_html__('Main Menu', '_themename'),
+        'footer-menu' => esc_html__('Footer Menu', '_themename')
+    ) );
+}
+add_action( 'init', '_themename_register_menus' );
+?>
+//Include navigation.php in functions.php
+
+
+
+
+//Call in theme for destop menu
+			<div class="container d-none  d-lg-block d-xl-block">
+				<div class="row">
+					<div class="col-lg-12">        
+						<div class="c-navigation">
+							<div class="o-container">
+								<nav class="header-nav" role="navigation" aria-label="<?php esc_html_e( 'Main Navigation', '_themename' ) ?>">
+									<?php wp_nav_menu( array('theme_location' => 'main-menu') ) ?>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+
+//CSS  for destop menu
+/* menu start*/
+ .c-navigation {
+	 background-color: #2b2b2b;
+	 color: #fff;
+}
+ .c-navigation nav {
+	 position: relative;
+}
+
+.header-nav .menu {
+	 margin: 0;
+	 display: flex;
+	 list-style: none;
+}
+ .header-nav .menu .menu-button {
+	 padding: 0;
+	 background-color: transparent;
+	 color: inherit;
+	 margin-left: 10px
+}
+ .header-nav .menu > .menu-item {
+	 margin: 0;
+}
+ .header-nav .menu > .menu-item > a {
+	    padding: 15px 20px;
+    border-bottom: none;
+    display: block;
+    color: #fff;
+   /* border-left: 1px solid #222;*/
+    font-size: 14px;
+}
+ .header-nav .menu > .menu-item:hover a, .header-nav .menu > .menu-item.open > a {
+	 background: #fff;
+	 color: #000;
+	 	text-decoration: none;
+
+}
+ .header-nav .menu > .menu-item > .sub-menu {
+	 position: absolute;
+	 margin: 0;
+	 list-style: none;
+	 background: #fff;
+	 display: none;
+	 min-width: 200px;
+	 border: 1px solid #efefef;
+	 border-top-color: #fff;
+	 z-index: 10;
+}
+ .header-nav .menu > .menu-item:not(.mega) .sub-menu .sub-menu {
+	 position: absolute;
+	 margin: 0;
+	 list-style: none;
+	 background: #fff;
+	 display: none;
+	 min-width: 200px;
+	 left: 100%;
+	 font-size: 100%;
+	 top: 0px;
+	 border-top-color: #efefef;
+}
+ .header-nav .menu > .menu-item:not(.mega) .sub-menu .menu-item {
+	 margin: 0;
+	 position: relative;
+}
+ .header-nav .menu > .menu-item:not(.mega) .sub-menu .menu-item a {
+	    padding: 10px 20px;
+		border-bottom: 1px solid #efefef;
+		display: block;
+		font-size: 14px;
+}
+ .header-nav .menu > .menu-item:not(.mega) .sub-menu .menu-item:hover > a {
+	 color: #000;
+	text-decoration: none;
+
+}
+ .header-nav .menu .menu-item:not(.mega).open > .sub-menu {
+	 display: block !important;
+
+}
+ 
+/* menu end*/
+	   
+	   
+	   
+	   
+/*mega menu start*/ 
+ .header-nav .menu .menu-item.mega.open > .sub-menu {
+	 display: flex !important;
+}
+ .header-nav .menu > .menu-item.mega {
+	 margin: 0;
+}
+ .header-nav .menu > .menu-item.mega > .sub-menu {
+	 width: auto;
+	 flex-wrap: wrap;
+	 border: 1px solid #efefef;
+	 border-top-color: #fff;
+}
+ .header-nav .menu > .menu-item.mega > .sub-menu > .menu-item > a {
+    font-weight: 600;
+    font-size: 18px;
+    border-bottom: 1px solid #b9b5b5;
+    color: #000;
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 17px 0;
+}
+ .header-nav .menu > .menu-item.mega > .sub-menu > .menu-item > a button {
+	 display: none;
+}
+ .header-nav .menu > .menu-item.mega > .sub-menu > .menu-item > .sub-menu {
+	 margin: 0;
+}
+ .header-nav .menu > .menu-item.mega > .sub-menu > .menu-item > .sub-menu a {
+	 border-bottom: none;
+	 font-size: 14px;
+}
+ .header-nav .menu > .menu-item.mega.cols-1 > .sub-menu > .menu-item {
+	 width: 100%;
+	 padding: 20px;
+}
+ .header-nav .menu > .menu-item.mega.cols-2 > .sub-menu > .menu-item {
+	 width: 50%;
+	 padding: 20px;
+}
+ .header-nav .menu > .menu-item.mega.cols-3 > .sub-menu > .menu-item {
+	 width: 33.3333333333%;
+	 padding: 20px;
+}
+ .header-nav .menu > .menu-item.mega.cols-4 > .sub-menu > .menu-item {
+	 width: 25%;
+	 padding: 20px;
+	 right:0;
+
+}
+ .header-nav .menu > .menu-item.mega.cols-5 > .sub-menu > .menu-item {
+	 width: 20%;
+	 padding: 20px;
+}
+ .header-nav .menu > .menu-item.mega.cols-6 > .sub-menu > .menu-item {
+	 width: 16.6666666667%;
+	 padding: 20px;
+}
+/*mega menu start*/ 
+
+
+//Include js in main.js
+jQuery(document).ready(function( $ ) {
+
+$('.c-navigation').on('mouseenter', '.menu-item-has-children', (e) => {
+    if(!$(e.currentTarget).parents('.sub-menu').length) {
+        $('.menu > .menu-item.open').find('> a > .menu-button').trigger('click');
+    }
+    $(e.currentTarget).addClass('open');
+}).on('mouseleave', '.menu-item-has-children', (e) => {
+    $(e.currentTarget).removeClass('open');
+})
+
+});
+
+
+//Call in theme for Mobile Menu
+			<div class="container d-lg-none d-block ">
+				<div class="row">
+					<div class="col-lg-12">  
+						<div class="mobile-menu-area ">
+							<div class="mobile-menu">
+								<nav id="mobile-menu-active">
+									<?php wp_nav_menu( array('theme_location' => 'main-menu') ) ?>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+//Dynamic mean menu css
+//Dynamic mean js
+//Add js in main.js
+
+jQuery('#mobile-menu-active').meanmenu();
+

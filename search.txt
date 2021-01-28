@@ -1,0 +1,3 @@
+call search query in header.php
+create search.php
+creat searchform.hp

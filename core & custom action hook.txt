@@ -1,0 +1,16 @@
+//Custom hook register in functions.php
+function after_pagination(){
+	echo'dhjdh';
+}
+add_action('_codetheme_after_pagination', 'after_pagination');
+//then call into theme like index.php
+	<?php do_action('_codetheme_after_pagination'); ?>
+
+
+
+
+//core action hook direct in functions.php
+function head_css_add(){
+	echo'<style>body{background-color:#000;}</style>';
+}
+add_action('wp_head', 'head_css_add');

@@ -1,0 +1,48 @@
+<?php
+ 
+$args = array(
+    // Arguments for your query.
+	// http://codex.wordpress.org/Class_Reference/WP_Query#Category_Parameters
+  'cat' => 2, // (int) - Display posts that have this category (and any children of that category), using category id.
+  'category_name' => 'aciform', // (string) - Display posts that have these categories (and any children of that category), using category slug.
+);
+ 
+// Custom query.
+$query = new WP_Query( $args );
+ 
+// Check that we have query results.
+if ( $query->have_posts() ) {
+ 
+    // Start looping over the query results.
+    while ( $query->have_posts() ) {
+ 
+        $query->the_post();
+ 
+        // Contents of the queried post results go here.
+		?>
+						<div class="post-sub">
+						<?php if(get_the_post_thumbnail() !== '') { ?>
+						<div class="c-post__thumbnail wp-block-image img">
+							<a href="<?php the_permalink()?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'large' ) ?></a>
+						</div>
+						<?php } ?>
+						<h2>
+							<a href="<?php the_permalink()?>" title="<?php the_title_attribute(); ?>"><?php the_title()?></a>
+						</h2>
+						<div>
+						<?php _codetheme_post_meta();?>
+						</div>
+						<div>
+							<?php the_excerpt();?>
+						</div>
+						<?php _codetheme_readmore();?>
+						<?php echo _codetheme_delete_post();?>
+						</div><?php
+    }
+ 
+}
+ 
+// Restore original post data.
+wp_reset_postdata();
+ 
+?>

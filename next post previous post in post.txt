@@ -1,0 +1,2 @@
+code in template-parts/single/navigation.php
+Code in single .php
